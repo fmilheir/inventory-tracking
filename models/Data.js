@@ -1,7 +1,8 @@
 const mongoose = require('mongoose');
-
+//layouts for the user
 const DataSchema = new mongoose.Schema(
     {
+        //unfortunatly is not adding this field i dkw 
         user_id: {
             type: mongoose.Schema.Types.ObjectId,
             ref: "User",

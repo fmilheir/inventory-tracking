@@ -1,6 +1,6 @@
 require('../models/database');
 const Data = require('../models/Data');
-
+//controler for the vizuzlization page, sends the items stored in the database
 exports.test = async(req, res) => {
     try{
         const limit = 15;
@@ -27,7 +27,7 @@ exports.test = async(req, res) => {
 
 
 
-
+//dellete a stok item, passing it to a selled item 
 exports.delete= async(req, res) =>{
         const id = req.params.id;
         try {
@@ -47,11 +47,13 @@ exports.delete= async(req, res) =>{
         }
 }
 
+//enamble to render the edit page 
 exports.edit = async(req, res) =>{
     const id = req.params.id;
     res.render('edit');
 }
 
+//update the quatity of a item 
 exports.update= async(req, res) =>{
     const id = req.params.id;
     try {
@@ -70,16 +72,17 @@ exports.update= async(req, res) =>{
     }
     
 }
-
+//enamble to render the edit page 
 exports.graphic = async(req, res) =>{
     res.render('view_graphics');
 }
-
+//enamble to render the add page 
 exports.add = async(req, res) =>{
    
     res.render('add', {title: 'add item'});
 }
 
+//for the post method, add a new item with the info recived from the form
 exports.addOnPost = async(req, res) =>{
     try{
         

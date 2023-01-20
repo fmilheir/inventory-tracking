@@ -19,15 +19,7 @@ app.use(expressSession({
     resave:true,
     saveUninitialized: true
 }));
-
-app.use("*", async (req, res, next) => {
-    global.user = false;
-    if (req.session.userID && !global.user) {
-      const user = await User.findById(req.session.userID);
-      global.user = user;
-    } 
-    next();
-  })
+//i wanted to use flash to display messages in the ejs, didnt had time to implement it
 app.use(flash());
 app.use(express.urlencoded({extended: true}));
 app.use(express.static('public'));

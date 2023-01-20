@@ -27,6 +27,7 @@ app.use("*", async (req, res, next) => {
 //}
 
 const router = express.Router();
+//pages and forms before loggin
 router.get('/',main.homepage);
 router.get('/About',main.About);
 router.get('/pricing', main.pricing);
@@ -39,10 +40,12 @@ router.post('/login',User.enter);
 
 router.get('/logout',User.logout);
 
+//change layout using the headers for the loggedin user
 router.use(function(req, res, next){
     res.locals.layout = './common/main_login';
     next();
 });
+//only methods that uses this new header
 router.get('/view_graphics', Info.graphic);
 router.get('/vizualization',Info.test);
 router.get('/add',Info.add);
@@ -52,7 +55,7 @@ router.get("/add/edit/:id", Info.edit);
 router.post("/add/edit/:id", Info.update);
 
 
-
+//logout reduirect to mane page and destrys the session, but mine is not working so is basicly just sending me to the index page
 router.get("/logout", async (req, res) => {
   req.session.destroy();
   global.user = false;
