@@ -19,11 +19,11 @@ app.use("*", async (req, res, next) => {
 })
 
 //const authMiddleware = async (req, res, next) => {
-  //const user = await User.findById(req.session.userID);
-  //if (!user) {
+ // const user = await User.findById(req.session.userID);
+ // if (!user) {
   //  return res.redirect('/');
- // }
- // next()
+  //}
+  ///next()
 //}
 
 const router = express.Router();
