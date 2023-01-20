@@ -1,6 +1,5 @@
 require('../models/database');
 const Data = require('../models/Data');
-const User = require('../models/User');
 
 exports.test = async(req, res) => {
     try{
@@ -73,33 +72,17 @@ exports.update= async(req, res) =>{
 }
 
 exports.graphic = async(req, res) =>{
-    //const user = await User.findById(req.session.userID);
-  //if (!user) {
-   // return res.redirect('/');
-  //}
     res.render('view_graphics');
 }
 
-exports.vizualization = async(req, res) =>{
-    //const user = await User.findById(req.session.userID);
-  if (!user) {
-    return res.redirect('/');
-  }
-    res.render('vizualization');
-}
-
-
 exports.add = async(req, res) =>{
+   
     res.render('add', {title: 'add item'});
 }
 
 exports.addOnPost = async(req, res) =>{
     try{
         
-        if(!req.files || Object.keys(req.files).length === 0)
-        {
-            console.log('No Files where uploaded.');
-        }
         const newData =  new Data({
             object: req.body.item,
             type : true,

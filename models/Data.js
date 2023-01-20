@@ -4,7 +4,7 @@ const DataSchema = new mongoose.Schema(
     {
         user_id: {
             type: mongoose.Schema.Types.ObjectId,
-            ref: "Users",
+            ref: "User",
         },
         object: { type: String, required: [true, 'what is it stored'], unique: true },
         type:{ type: Boolean, required: [true, 'what is it stored']},

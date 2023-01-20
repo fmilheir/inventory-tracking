@@ -1,8 +1,7 @@
 const express = require('express');
-const router = express.Router();
 const main = require('../controllers/record');
 const app = express();
-const User = require('../controllers/user')
+const User = require('../controllers/user');
 const Info = require('../controllers/info');
 
 
@@ -10,9 +9,24 @@ const Info = require('../controllers/info');
 //the { expires: new Date(253402300000000) } } is the bigest expiration date in javascript
 
 
+app.use("*", async (req, res, next) => {
+  global.user = false;
+  if (req.session.userID && !global.user) {
+    const user = await User.findById(req.session.userID);
+    global.user = user;
+  }
+  next();
+})
 
+//const authMiddleware = async (req, res, next) => {
+  //const user = await User.findById(req.session.userID);
+  //if (!user) {
+  //  return res.redirect('/');
+ // }
+ // next()
+//}
 
-
+const router = express.Router();
 router.get('/',main.homepage);
 router.get('/About',main.About);
 router.get('/pricing', main.pricing);
@@ -22,22 +36,6 @@ router.get('/signup',User.signup);
 
 router.post('/signup',User.create);
 router.post('/login',User.enter);
-
-//app.use("*", async (req, res, next) => {
- // global.user = false;
- // if (req.session.userID && !global.user) {
-  //  const user = await User.findById(req.session.userID);
-  //  global.user = user;
- // } 
- // next();
-//})
-//const authMiddleware = async (req, res, next) => {
-//const user = await User.findById(req.session.userID);
- // if (!user) {
-  //    return res.redirect('/login');
- // }
-  //next()
-//}
 
 router.get('/logout',User.logout);
 

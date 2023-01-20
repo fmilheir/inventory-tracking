@@ -3,7 +3,6 @@ const User = require("../models/User");
 const bcrypt = require('bcrypt');
 
 
-
 exports.create = async (req, res) =>
 {
     try
