@@ -1,7 +1,7 @@
 # Advanced Database COM526 Application Report
 
 Name: Filipe Quartin
-GitHub link: https://github.com/fmilheir/inventory-tracking
+GitHub link: https://github.com/fmilheir/inventory-tracking 
 Cyclic: https://jade-clear-turtle.cyclic.app/
 Stn: Q15287599
 
